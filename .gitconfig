@@ -1,0 +1,17 @@
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[user]
+	name = hagi845
+	email = 89743047+hagi845@users.noreply.github.com
+[push]
+	default = current
+[color]
+	ui = true
+[alias]
+	c = checkout
+	b = branch
+	gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	undo = reset --soft HEAD^
