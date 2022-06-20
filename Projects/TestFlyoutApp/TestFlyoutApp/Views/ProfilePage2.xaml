@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TestFlyoutApp.Views.ProfilePage1">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
+    </ContentPage.Padding>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Accent" />
+                <!-- TextColor未指定だと、UWPでアンフォーカス時にテキストが消える -->
+            </Style>
+            <Style TargetType="Editor">
+                <Setter Property="TextColor" Value="Accent" />
+                <!-- TextColor未指定だと、UWPでアンフォーカス時にテキストが消える -->
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+
+            <Label Text="メインのプロフィール写真" FontSize="Small" Margin="10" VerticalOptions="Start" />
+            <Image Source="https://selecthome.co.jp/wp-content/uploads/2020/08/a-_APL3175.jpg" VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFill"/>
+
+
+            <Grid HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="320" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Text="名前" />
+                <Entry Grid.Row="0" Grid.Column="1" Placeholder="ニックネームを入力" />
+                <Label Grid.Row="1" Text="性別" />
+                <Picker Grid.Row="1" Grid.Column="1" x:Name="Gender" TextColor="Accent">
+                    <Picker.Items>
+                        <x:String>男</x:String>
+                        <x:String>女</x:String>
+                        <x:String>その他</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Grid.Row="2" Text="生年月日" />
+                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="Birthday" Format="yyyy/MM/dd" TextColor="Accent"/>
+
+                <Label Grid.Row="3" Text="自己紹介" />
+                <Editor Grid.Row="3" Grid.Column="1"  x:Name="Editor1" HeightRequest="80" Placeholder=""  TextColor="Accent"/>
+
+            </Grid>
+            <Button Text="次へ" VerticalOptions="CenterAndExpand" Clicked="NextPage_Clicked" />
+
+        </StackLayout>
+
+    </ScrollView>
+
+
+
+</ContentPage>
